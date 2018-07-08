@@ -14,14 +14,16 @@ Summary: Contains some functions catching all messages, 'stdout' and other usefu
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-pander-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-pander-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-pander-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-pander-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-pander-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-pander-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-pander-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-pander-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-pander-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-pander-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-pander-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-pander-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-pander/badges/version.svg)](https://anaconda.org/conda-forge/r-pander)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-pander/badges/downloads.svg)](https://anaconda.org/conda-forge/r-pander)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--pander-green.svg)](https://anaconda.org/conda-forge/r-pander) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-pander.svg)](https://anaconda.org/conda-forge/r-pander) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-pander.svg)](https://anaconda.org/conda-forge/r-pander) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-pander.svg)](https://anaconda.org/conda-forge/r-pander) |
 
 Installing r-pander
 ===================
