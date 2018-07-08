@@ -1,4 +1,4 @@
-{% set version = '0.6.1' %}
+{% set version = "0.6.2" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/pander_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/pander/pander_{{ version }}.tar.gz
-  sha256: f79e4c1f807d9c6b257c79c61978939b938c0fdd55875524274f3a1d43b3b3ab
+  sha256: f1c60879488f8f61aa69905eefb30e4f2aa4304d3157896eb45fe57527cea73d
 
 build:
   number: 0
