@@ -1,5 +1,4 @@
-{% set version = "0.6.2" %}
-
+{% set version = '0.6.2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,13 +9,13 @@ package:
 source:
   fn: pander_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/pander_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/pander/pander_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/pander_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/pander/pander_{{ version }}.tar.gz
   sha256: f1c60879488f8f61aa69905eefb30e4f2aa4304d3157896eb45fe57527cea73d
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 2
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -24,40 +23,48 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-rcpp
     - r-digest
+    - pandoc
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-rcpp
     - r-digest
+    - pandoc
 
 test:
   commands:
-    - $R -e "library('pander')"  # [not win]
+    - $R -e "library('pander')"           # [not win]
     - "\"%R%\" -e \"library('pander')\""  # [win]
 
 about:
-  home: https://CRAN.R-project.org/package=pander
+  home: http://rapporter.github.io/pander
   license: AGPL-3
-  summary: "Contains some functions catching all messages, 'stdout' and other useful information
-    while evaluating R code and other helpers to return user specified text elements (like: header,
-    paragraph, table, image, lists etc.) in 'pandoc' markdown or several type of R objects similarly
-    automatically transformed to markdown format. Also capable of exporting/converting (the resulting)
-    complex 'pandoc' documents to e.g. HTML, 'PDF', 'docx' or 'odt'.  This latter reporting feature is
-    supported in brew syntax or with a custom reference class with a smarty caching 'backend'."
+  summary: 'Contains some functions catching all messages, ''stdout'' and other useful information
+    while evaluating R code and other helpers to return user specified text elements
+    (like: header, paragraph, table, image, lists etc.) in ''pandoc'' markdown or several
+    type of R objects similarly automatically transformed to markdown format. Also capable
+    of exporting/converting (the resulting) complex ''pandoc'' documents to e.g. HTML,
+    ''PDF'', ''docx'' or ''odt''. This latter reporting feature is supported in brew
+    syntax or with a custom reference class with a smarty caching ''backend''.'
   license_family: AGPL
 
 extra:
   recipe-maintainers:
-    - cbrueffer
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
