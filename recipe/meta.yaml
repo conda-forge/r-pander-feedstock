@@ -1,4 +1,4 @@
-{% set version = "0.6.4" %}
+{% set version = "0.6.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/pander_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/pander/pander_{{ version }}.tar.gz
-  sha256: 50e2035cac1124e9890a0774dcdc69c4fea8aff4b50438071fdaf60e4a66d2ce
+  sha256: 2add076bd2ca6749715a044e26baf1e0aee5d50211903ee6bfceecc30b9e9f90
 
 build:
   merge_build_host: true  # [win]
