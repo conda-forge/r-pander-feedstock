@@ -1,6 +1,5 @@
 {% set version = "0.6.5" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-pander
@@ -13,9 +12,8 @@ source:
   sha256: 2add076bd2ca6749715a044e26baf1e0aee5d50211903ee6bfceecc30b9e9f90
 
 build:
-  merge_build_host: true  # [win]
   skip: true              # [ppc64le]
-  number: 2
+  number: 3
   rpaths:
     - lib/R/lib/
     - lib/
@@ -23,7 +21,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
     - {{ compiler('cxx') }}        # [not win]
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
@@ -39,7 +39,6 @@ requirements:
     - pandoc
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-rcpp
     - r-digest
     - pandoc
